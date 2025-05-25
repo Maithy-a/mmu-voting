@@ -161,12 +161,12 @@ const VotingSection = () => {
         <form onSubmit={submitVote}>
           {Object.entries(candidates).map(([position, list]) => (
             <div key={position} className="vote-section">
-              <h3>{position.replace(/([A-Z])/g, " $1").trim()}</h3>
+              <h3 className="position" >{position.replace(/([A-Z])/g, " $1").trim()}</h3>
               <div className="candidates-grid">
                 {list.map((candidate) => (
                   <label
                     key={candidate}
-                    className={`candidate-option ${votes[position] === candidate ? "selected" : ""}`}
+                    className={`candidate-option position ${votes[position] === candidate ? "selected" : ""}`}
                   >
                     <input
                       type="radio"
