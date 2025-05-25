@@ -23,7 +23,7 @@ const Header = () => {
     <header className="app-header">
       <div className="logo">
         <img
-          src="/images/mmulogo1.png"
+          src="/images/mmu.png"
           alt="Multimedia University of Kenya"
           className="mmu-logo"
           onClick={() => navigate(isLoggedIn ? "/dashboard" : "/")}

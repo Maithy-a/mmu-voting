@@ -104,10 +104,16 @@ const Results = () => {
                               backgroundColor: winners?.includes(name) ? "var(--primary-color)" : "#ccc",
                             }}
                           ></div>
-                          <span className="vote-count">
+                          <span
+                            className="vote-count"
+                            style={{
+                              color: winners?.includes(name) ? "#fff" : "#000",
+                            }}
+                          >
                             {votes} vote{votes !== 1 ? "s" : ""}
                           </span>
                         </div>
+
                       </li>
                     ))}
                 </ul>

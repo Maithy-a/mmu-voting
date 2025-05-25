@@ -118,149 +118,152 @@ const Register = () => {
     <div className="register-page">
       <Header />
       <MainContainer>
-        <div className="auth-logo-container">
-          <img src="/images/mmulogo1.png" alt="Multimedia University of Kenya" className="auth-logo" />
-          <h2>Student Registration</h2>
+        <div className="card" >
+          <div className="auth-logo-container">
+            <img src="/images/mmulogo1.png" alt="Multimedia University of Kenya" className="auth-logo" />
+            <h2>Student Registration</h2>
+          </div>
+
+          {error && <div className="alert alert-danger">{error}</div>}
+          {success && <div className="alert alert-success">{success}</div>}
+
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <label htmlFor="admissionNumber">Admission Number</label>
+              <input
+                type="text"
+                id="admissionNumber"
+                name="admissionNumber"
+                value={formData.admissionNumber}
+                onChange={handleChange}
+                pattern="[A-Za-z0-9]+"
+                title="Admission number can only contain letters and numbers"
+                required
+                disabled={loading}
+                placeholder="Enter admission number"
+                maxLength="20"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                pattern="[A-Za-z\s'-]+"
+                title="Name can only contain letters, spaces, apostrophes, and hyphens"
+                required
+                disabled={loading}
+                placeholder="Enter full name"
+                maxLength="50"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                title="Please enter a valid email address"
+                required
+                disabled={loading}
+                placeholder="Enter email address"
+                maxLength="100"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="course">Course</label>
+              <input
+                type="text"
+                id="course"
+                name="course"
+                value={formData.course}
+                onChange={handleChange}
+                pattern="[A-Za-z\s'-]+"
+                title="Course name can only contain letters, spaces, apostrophes, and hyphens"
+                required
+                disabled={loading}
+                placeholder="Enter course name"
+                maxLength="50"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                pattern="[0-9]{10}"
+                title="Phone number must be exactly 10 digits"
+                required
+                disabled={loading}
+                placeholder="Enter 10-digit phone number"
+                inputMode="numeric"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                disabled={loading}
+                placeholder="Create password"
+                minLength="8"
+                maxLength="30"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                disabled={loading}
+                placeholder="Confirm password"
+                minLength="8"
+                maxLength="30"
+              />
+            </div>
+
+            <button type="submit" className="submit-btn " disabled={loading}>
+              {loading ? (
+                <>
+                  <span className="spinner-small"></span>
+                  Registering...
+                </>
+              ) : (
+                "Register"
+              )}
+            </button>
+
+            <div className="auth-links">
+              <button type="button" onClick={() => navigate("/")} disabled={loading}>
+                Already have an account? Login
+              </button>
+            </div>
+          </form>
         </div>
 
-        {error && <div className="alert alert-danger">{error}</div>}
-        {success && <div className="alert alert-success">{success}</div>}
-
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="admissionNumber">Admission Number</label>
-            <input
-              type="text"
-              id="admissionNumber"
-              name="admissionNumber"
-              value={formData.admissionNumber}
-              onChange={handleChange}
-              pattern="[A-Za-z0-9]+"
-              title="Admission number can only contain letters and numbers"
-              required
-              disabled={loading}
-              placeholder="Enter admission number"
-              maxLength="20"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              pattern="[A-Za-z\s'-]+"
-              title="Name can only contain letters, spaces, apostrophes, and hyphens"
-              required
-              disabled={loading}
-              placeholder="Enter full name"
-              maxLength="50"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              title="Please enter a valid email address"
-              required
-              disabled={loading}
-              placeholder="Enter email address"
-              maxLength="100"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="course">Course</label>
-            <input
-              type="text"
-              id="course"
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
-              pattern="[A-Za-z\s'-]+"
-              title="Course name can only contain letters, spaces, apostrophes, and hyphens"
-              required
-              disabled={loading}
-              placeholder="Enter course name"
-              maxLength="50"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              pattern="[0-9]{10}"
-              title="Phone number must be exactly 10 digits"
-              required
-              disabled={loading}
-              placeholder="Enter 10-digit phone number"
-              inputMode="numeric"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              disabled={loading}
-              placeholder="Create password"
-              minLength="8"
-              maxLength="30"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              disabled={loading}
-              placeholder="Confirm password"
-              minLength="8"
-              maxLength="30"
-            />
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? (
-              <>
-                <span className="spinner-small"></span>
-                Registering...
-              </>
-            ) : (
-              "Register"
-            )}
-          </button>
-
-          <div className="auth-links">
-            <button type="button" onClick={() => navigate("/")} disabled={loading}>
-              Already have an account? Login
-            </button>
-          </div>
-        </form>
       </MainContainer>
     </div>
   )
