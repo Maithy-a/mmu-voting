@@ -139,10 +139,14 @@ body {
     margin: auto;
 } */
 
-.auth-form {}
+/* .auth-form {} */
 
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.position{
+    text-transform: capitalize;
 }
 
 .form-group label {

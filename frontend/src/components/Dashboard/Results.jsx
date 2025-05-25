@@ -80,7 +80,7 @@ const Results = () => {
 
           return (
             <div key={position} className="result-section">
-              <h3>{formatPosition(position)}</h3>
+              <h3 className="position" >{formatPosition(position)}</h3>
 
               {Object.keys(candidates).length === 0 ? (
                 <p className="no-votes">No votes for this position yet</p>
