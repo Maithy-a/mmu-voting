@@ -124,8 +124,11 @@ router.post("/submitVote", auth, async (req, res) => {
   }
 })
 
-// GET /voteResults - Fixed route definition
-router.get("/voteResults", checkVotingClosed, async (req, res) => {
+
+//router.get("/voteResults", checkVotingClosed, async (req, res) => {
+
+// For testing
+router.get("/voteResults", async (req, res) => {
   try {
     const results = await getVoteCounts()
     res.json(results)
